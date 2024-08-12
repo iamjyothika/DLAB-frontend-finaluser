@@ -1,0 +1,123 @@
+/* .gradient-custom-2 {
+  background: #fbc2eb;
+
+  background: -webkit-linear-gradient(
+    to right,
+    rgba(251, 194, 235, 1),
+    rgba(166, 193, 238, 1)
+  );
+
+  background: linear-gradient(
+    to right,
+    rgba(251, 194, 235, 1),
+    rgba(166, 193, 238, 1)
+  );
+}
+.product-img img {
+  transition: transform 0.3s ease;
+}
+
+.product-img:hover img {
+  transform: scale(1.1);
+}
+.account-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-details {
+  border: 2px solid #ccc;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.user-details img {
+  width: 150px;
+  border-radius: 50%;
+}
+
+.user-info {
+  border: 2px solid #ccc;
+  padding: 10px;
+  border-radius: 10px;
+}
+body {
+  background-image: url("background.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+}
+
+.container-wrapper {
+  padding: 50px 0;
+}
+
+.container-md {
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container-wrapper {
+  padding: 50px 0;
+}
+
+.container-md {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.text-label {
+  color: #6c757d;
+  font-weight: 600;
+}
+
+.text-value {
+  color: #343a40;
+  font-weight: bold;
+}
+
+.mt-4 {
+  margin-top: 1.5rem;
+}
+
+.mt-5 {
+  align-items: center;
+} */
+.container-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+.mt-4 {
+  margin-top: 1.5rem;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("labmain6edit.png");
+  background-size: cover;
+  background-position: center;
+  overflow-x: hidden;
+}
