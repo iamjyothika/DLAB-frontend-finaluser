@@ -17,6 +17,8 @@ import Booknow from './pages/Booknow.jsx';
 import ViewAppointment from './pages/ViewAppointment.jsx';
 import Labdetails2 from './pages/Labdetails2.jsx';
 import Editprofile from './pages/Editprofile.jsx';
+import Review from './pages/Testreview.jsx';
+import TestReport from './pages/TestReport.jsx';
 function App() {
   return (
      <Router>
@@ -38,6 +40,10 @@ function App() {
         <Route path="/booknow" element={<><Header/><Header2/><Booknow/><Footer/></>} />
         <Route path="/viewappointment" element={<ViewAppointment/>} />
         <Route path="/editprofile" element={<><Editprofile/></>} />
+        <Route path="/add-review/:id" element={<><Review/></>} />
+        <Route path="/test-report/:reservationId"  element={<><TestReport/></>} />
+      
+
       </Routes>
      
     </Router>

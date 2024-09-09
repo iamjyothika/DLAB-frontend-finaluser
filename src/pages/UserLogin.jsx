@@ -71,9 +71,13 @@ function Login() {
       if (response.status === 200) {
        
         // Store the access token in local storage
-        const { access } = response.data;
+        const { access,user_id } = response.data;
+   
         sessionStorage.setItem('access_token', access);
+        sessionStorage.setItem('Userid',user_id);
+        console.log('Userid',user_id);
         console.log('access token',access);
+        
         navigate('/')
         
         // Adjust the URL based on your routing

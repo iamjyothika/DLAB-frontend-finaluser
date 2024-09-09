@@ -15,7 +15,7 @@ function Register() {
     name: "",
     email: "",
     contact: "",
-    profile_pic: null,
+    profile_pic: "",
     address: "",
     city: "",
     state: "",
@@ -52,6 +52,7 @@ function Register() {
 
     let updatedToJson = new FormData()
 
+    updatedToJson.append('profile_pic',formData.name)
     updatedToJson.append('profile_pic',formData.profile_pic)
     updatedToJson.append('address',formData.address)
     updatedToJson.append('city',formData.city)

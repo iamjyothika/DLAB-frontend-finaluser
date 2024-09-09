@@ -1,6 +1,58 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { BASE_URL } from '../baseurl';
 
-export default function Doctor() {
+
+
+
+
+
+ function Doctor() {
+    const [doctors,setDoctors]=useState([]);
+    const [labs, setLabs] = useState([]);
+    const [combinedData, setCombinedData] = useState([]);
+   
+
+
+    useEffect(() => {
+        const fetchDoctors = async () => {
+            try {
+              const response = await axios.get(`${BASE_URL}/user/all-doctor/`);
+              setDoctors(response.data);
+            } catch (error) {
+              console.error('Error fetching doctors:', error);
+            }
+          };
+          const fetchLabs = async () => {
+            try {
+              const response = await axios.get(`${BASE_URL}/user/all-labs/`);
+              setLabs(response.data);
+            } catch (error) {
+              console.error('Error fetching labs:', error);
+            }
+          };
+      
+          fetchDoctors();
+          fetchLabs();
+        }, []);
+      
+        useEffect(() => {
+          // Combine doctors with lab names
+          const combined = doctors.map(doc => {
+            // Find the lab corresponding to the doctor
+            const lab = labs.find(lab => lab.id === doc.lab);
+      
+            return {
+              ...doc,
+              labname: lab ? lab.labname : 'Unknown Lab', // Add labname to the doctor
+            };
+          });
+      
+          setCombinedData(combined);
+        }, [doctors, labs]);  
+
+
+       
     return (
         <>
 
@@ -43,15 +95,17 @@ export default function Doctor() {
     <div class="ltn__team-area pt-110--- pb-90">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-4 col-sm-6">
+            {combinedData.map((doctor, index) => (
+           
+                <div key={index} class="col-lg-4 col-sm-6">
                     <div class="ltn__team-item ltn__team-item-3---">
                         <div class="team-img">
-                            <img src="img/photos/doctors1.jpg" alt="Image"/>
+                            <img src={`${BASE_URL}/${doctor.doctorimage}`} alt="Image"/>
                         </div>
                         <div style={{backgroundColor:'white'}} class="team-info">
-                            <h4><a href="team-details.html">Ronin D. William</a></h4>
-                            <h6>MBBS,MD,Uro</h6>
-                            <h6 class="ltn__secondary-color">Scientist,Hyatt Labs</h6>
+                            <h4><a href="team-details.html">{doctor.doctorname}</a></h4>
+                            <h6>{doctor.qualification}</h6>
+                            <h6 class="ltn__secondary-color">{doctor.specialiazation},{doctor.labname}</h6>
                             <div class="ltn__social-media">
                                 <ul>
                                     <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -62,102 +116,13 @@ export default function Doctor() {
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="ltn__team-item ltn__team-item-3---">
-                        <div class="team-img">
-                            <img src="img/photos/doctor2.jpg" alt="Image"/>
-                        </div>
-                        <div style={{backgroundColor:'white'}} class="team-info">
-                            <h4><a href="team-details.html">Kelly Anderson</a></h4>
-                            <h6>MBBS,MD,Uro</h6>
-                            <h6 class="ltn__secondary-color">Scientist,Riott Labs</h6>
-                            <div class="ltn__social-media">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="ltn__team-item ltn__team-item-3---">
-                        <div class="team-img">
-                            <img src="img/photos/doctors3.jpg" alt="Image"/>
-                        </div>
-                        <div style={{backgroundColor:'white'}} class="team-info">
-                            <h4><a href="team-details.html">Roopitha kavan</a></h4>
-                            <h6>MBBS,MD,Uro</h6>
-                            <h6 class="ltn__secondary-color">Endocrinologist,Hyatt Labs</h6>
-                            <div class="ltn__social-media">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="ltn__team-item ltn__team-item-3---">
-                        <div class="team-img">
-                            <img src="img/photos/doctors1.jpg" alt="Image"/>
-                        </div>
-                        <div style={{backgroundColor:'white'}} class="team-info">
-                            <h4><a href="team-details.html">Roland Meyers</a></h4>
-                            <h6>MBBS,MD,Uro</h6>
-                            <h6 class="ltn__secondary-color">Endocrinologist,Optigen Labs</h6>
-                            <div class="ltn__social-media">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="ltn__team-item ltn__team-item-3---">
-                        <div class="team-img">
-                            <img  src="img/photos/doctor6.webp" alt="Image"/>
-                        </div>
-                        <div style={{backgroundColor:'white'}} class="team-info">
-                            <h4><a href="team-details.html">Anna Davis</a></h4>
-                            <h6>MBBS,MD,Uro</h6>
-                            <h6 class="ltn__secondary-color">Endocrinologist,Hyatt Labs</h6>
-                            <div class="ltn__social-media">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="ltn__team-item ltn__team-item-3---">
-                        <div class="team-img">
-                            <img src="img/photos/doctor5.webp" alt="Image"/>
-                        </div>
-                        <div style={{backgroundColor:'white'}} class="team-info">
-                            <h4><a href="team-details.html">James Carter</a></h4>
-                            <h6>MBBS,MD,Uro</h6>
-                            <h6 class="ltn__secondary-color">Endocrinologist,Hyatt Labs</h6>
-                            <div class="ltn__social-media">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                                </ul>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
+            ))}
+
+                
+                
+               
+
+                
             </div>
         </div>
         <div class="ltn__pagination-area text-center"style={{marginTop:'5%',marginBottom:'5%'}}>
@@ -188,3 +153,4 @@ export default function Doctor() {
         </>
     )
     }
+    export default Doctor;

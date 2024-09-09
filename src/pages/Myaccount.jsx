@@ -3,29 +3,42 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Col, Container, Row, Button } from "react-bootstrap";
 import "./Myacc.css";
 import indian from './indian.jpg';
+import axios from 'axios';
+import { BASE_URL} from "../baseurl";
+import { useNavigate } from 'react-router-dom';
+
 
 const MyAccount = () => {
   const [userData, setUserData] = useState(null);
+  const token = sessionStorage.getItem('access_token');
+  const navigate=useNavigate();
 
-  const fetchUserData = () => {
-    setTimeout(() => {
-      const mockUserData = {
-        username: "John Davis",
-        email: "johndavis@gmail.com",
-        image: "https://via.placeholder.com/150",
-        phone: "+91 8293839338",
-        address: "peettayil house, Manal, P.O Chalad",
-        city: "Kannur",
-        state: "Kerala",
-        pincode: "670014",
-      };
-      setUserData(mockUserData);
-    }, 1000);
-  };
-
+  
   useEffect(() => {
-    fetchUserData();
-  }, []);
+    if (token){
+      axios.get(`${BASE_URL}/user/users/update/`,{
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+      .then((response) => {
+        console.log(response);
+        setUserData(response.data)
+    });
+    
+   
+
+
+      // Handle error, possibly redirect to login if unauthorized
+   
+  } else {
+    console.error('Token not found. Please login again.');
+    // Redirect to login if token is not found
+    navigate('/userlogin');
+  }
+}, [navigate, token]);
+  
+
 
   if (!userData) {
     return (
@@ -36,6 +49,15 @@ const MyAccount = () => {
       </div>
     );
   }
+  const accountDetails = [
+    
+    { label: "Email", value: userData.email },
+    { label: "Phone", value: userData.contact },
+    { label: "Address", value: userData.address },
+    { label: "City", value: userData.city },
+    { label: "State", value: userData.state },
+    { label: "Pincode", value: userData.pincode }
+  ];
 
   return (
     <div className="container-wrapper d-flex justify-content-center align-items-center" style={{ height: '100vh',margin:'7%',borderRadius:'18px' }}>
@@ -48,20 +70,13 @@ const MyAccount = () => {
                 className="rounded-circle object-fit-cover"
                 height={170}
                 width={170}
-                src={indian}
+                src={`${BASE_URL}/${userData.profile_pic}`}
                 alt="User"
               />
               <div className="mt-5">
                 <div style={{marginLeft:'18%'}} className="d-flex flex-column align-items-center">
-                  {[
-                    ["Name", userData.username],
-                    ["Email", userData.email],
-                    ["Phone", userData.phone],
-                    ["Address", userData.address],
-                    ["City", userData.city],
-                    ["State", userData.state],
-                    ["Pincode", userData.pincode]
-                  ].map(([label, value], idx) => (
+                {accountDetails.map(({ label, value }, idx) => (
+            
                     <div key={idx} className="d-flex w-100 mb-3">
                       <div className="w-25 text-right pr-3" style={{ paddingRight: '20px' }}>
                         <p className="text-muted m-0" style={{ fontWeight: 'bold' }}>{label}:</p>

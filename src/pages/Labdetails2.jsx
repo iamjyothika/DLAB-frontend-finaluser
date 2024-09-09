@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 
 
 function Lab_details(){
+    
+
     return(
         <>
         
@@ -184,145 +186,7 @@ function Lab_details(){
                         </div>
                     </div>
                     {/* <!-- Shop Tab Start --> */}
-                    <div className="ltn__shop-details-tab-inner ltn__shop-details-tab-inner-2">
-                        <div className="ltn__shop-details-tab-menu">
-                            <div className="nav">
-                                <a style={{color:'black',fontFamily:'inherit',fontWeight:'bold',fontSize:'18px'}}className="active show" data-bs-toggle="tab" href="#liton_tab_details_1_1">DESCRIPTION</a>
-                                <a style={{color:'black',fontFamily:'inherit',fontWeight:'bold',fontSize:'18px'}}data-bs-toggle="tab" href="#liton_tab_details_1_2" className="">REVIEWS</a>
-                            </div>
-                        </div>
-                        <div className="tab-content">
-                            <div className="tab-pane fade active show" id="liton_tab_details_1_1">
-                                <div className="ltn__shop-details-tab-content-inner">
-                                    <h4 style={{color:'black',fontFamily:'inherit'}}className="title-2">Highly equipped with latest laboratory machines to perform routine as well as advanced tests.</h4>
-                                    <p style={{color:'black',fontFamily:'inherit'}}>DVA diagnostics pathology laboratory doctor and medical staff has diligently provided quality laboratory services to its patients, customers and to medical community in Mulund and nearby suburbs. </p> 
-                                    <p style={{color:'black',fontFamily:'inherit'}}>We remain committed today in providing accurate diagnostic test results and exceptional support services . Our values- Commit to service excellence Trust each other with respect and honesty Demonstrate responsibility and accountability Maintain confidentiality Be enthusiastic and continues improvement Vision - to provide every patient or customer with world class diagnostic pathological services easily accessible and affordable Mission-To become worldclass laboratory with technologies on par with international standards.</p>
-                                </div>
-                            </div>
-                            <div className="tab-pane fade" id="liton_tab_details_1_2">
-                                <div className="ltn__shop-details-tab-content-inner">
-                                    <h4 style={{color:'black',fontFamily:'inherit'}} className="title-2">Customer Reviews</h4>
-                                    <div className="product-ratting">
-                                        <ul>
-                                            <li><a style={{color:'seagreen'}}  href="#"><i className="fas fa-star"></i></a></li>
-                                            <li><a style={{color:'seagreen'}} href="#"><i className="fas fa-star"></i></a></li>
-                                            <li><a style={{color:'seagreen'}} href="#"><i className="fas fa-star"></i></a></li>
-                                            <li><a style={{color:'seagreen'}} href="#"><i className="fas fa-star-half-alt"></i></a></li>
-                                            <li><a style={{color:'seagreen'}} href="#"><i className="far fa-star"></i></a></li>
-                                            <li className="review-total"> <a style={{fontSize:'16px',color:'seagreen'}} href="#"> ( 95 Reviews )</a></li>
-                                        </ul>
-                                    </div>
-                                    <hr/>
-                                    {/* <!-- comment-area --> */}
-                                    <div className="ltn__comment-area mb-30">
-                                        <div className="ltn__comment-inner">
-                                            <ul>
-                                                <li>
-                                                    <div className="ltn__comment-item clearfix">
-                                                        <div className="ltn__commenter-img">
-                                                            <img src="img/photos/review1.png" alt="Image"/>
-                                                        </div>
-                                                        <div className="ltn__commenter-comment">
-                                                            <h6><a style={{color:'black',fontFamily:'inherit',fontWeight:'bold'}} href="#">Adam Smith</a></h6>
-                                                            <div className="product-ratting">
-                                                                <ul>
-                                                                    <li><a style={{color:'seagreen'}}  href="#"><i className="fas fa-star"></i></a></li>
-                                                                    <li><a style={{color:'seagreen'}} href="#"><i className="fas fa-star"></i></a></li>
-                                                                    <li><a style={{color:'seagreen'}} href="#"><i className="fas fa-star"></i></a></li>
-                                                                    <li><a style={{color:'seagreen'}} href="#"><i className="fas fa-star-half-alt"></i></a></li>
-                                                                    <li><a style={{color:'seagreen'}} href="#"><i className="far fa-star"></i></a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <p style={{color:'black',fontFamily:'inherit',fontWeight:'bold'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, omnis fugit corporis iste magnam ratione.</p>
-                                                            <span style={{color:'#0a9a73',borderColor:'black'}} className="ltn__comment-reply-btn">September 3, 2020</span>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div className="ltn__comment-item clearfix">
-                                                        <div className="ltn__commenter-img">
-                                                            <img src="img/photos/review2.jpg" alt="Image"/>
-                                                        </div>
-                                                        <div className="ltn__commenter-comment">
-                                                            <h6><a style={{color:'black',fontFamily:'inherit',fontWeight:'bold'}} href="#">Ria Picoult</a></h6>
-                                                            <div className="product-ratting">
-                                                                <ul>
-                                                                    <li><a style={{color:'seagreen'}} href="#"><i className="fas fa-star"></i></a></li>
-                                                                    <li><a style={{color:'seagreen'}}  href="#"><i className="fas fa-star"></i></a></li>
-                                                                    <li><a style={{color:'seagreen'}} href="#"><i className="fas fa-star"></i></a></li>
-                                                                    <li><a style={{color:'seagreen'}} href="#"><i className="fas fa-star-half-alt"></i></a></li>
-                                                                    <li><a style={{color:'seagreen'}} href="#"><i className="far fa-star"></i></a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <p style={{color:'black',fontFamily:'inherit',fontWeight:'bold'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, omnis fugit corporis iste magnam ratione.</p>
-                                                            <span style={{color:'#0a9a73',borderColor:'black'}} className="ltn__comment-reply-btn">September 2, 2020</span>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div className="ltn__comment-item clearfix">
-                                                        <div className="ltn__commenter-img">
-                                                            <img src="img/photos/review3.jpg" alt="Image"/>
-                                                        </div>
-                                                        <div className="ltn__commenter-comment">
-                                                            <h6><a style={{color:'black',fontFamily:'inherit',fontWeight:'bold'}} href="#">Reynold Jacobs</a></h6>
-                                                            <div className="product-ratting">
-                                                                <ul>
-                                                                <li><a style={{color:'seagreen'}}href="#"><i className="fas fa-star"></i></a></li>
-                                                                    <li><a style={{color:'seagreen'}} href="#"><i className="fas fa-star"></i></a></li>
-                                                                    <li><a style={{color:'seagreen'}} href="#"><i className="fas fa-star"></i></a></li>
-                                                                    <li><a style={{color:'seagreen'}} href="#"><i className="fas fa-star-half-alt"></i></a></li>
-                                                                    <li><a style={{color:'seagreen'}} href="#"><i className="far fa-star"></i></a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <p style={{color:'black',fontFamily:'inherit',fontWeight:'bold'}} >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, omnis fugit corporis iste magnam ratione.</p>
-                                                            <span style={{color:'#0a9a73',borderColor:'black'}} className="ltn__comment-reply-btn">September 2, 2020</span>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    {/* <!-- comment-reply --> */}
-                                    <div className="ltn__comment-reply-area ltn__form-box mb-30">
-                                        <form action="#">
-                                            <h4 className="title-2">Add a Review</h4>
-                                            <div className="mb-30">
-                                                <div className="add-a-review">
-                                                    <h6 >Your Ratings:</h6>
-                                                    <div className="product-ratting">
-                                                        <ul>
-                                                            <li><a style={{color:'seagreen'}} href="#"><i className="fas fa-star"></i></a></li>
-                                                            <li><a style={{color:'seagreen'}} href="#"><i className="fas fa-star"></i></a></li>
-                                                            <li><a style={{color:'seagreen'}} href="#"><i className="fas fa-star"></i></a></li>
-                                                            <li><a style={{color:'seagreen'}} href="#"><i className="fas fa-star-half-alt"></i></a></li>
-                                                            <li><a style={{color:'seagreen'}} href="#"><i className="far fa-star"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="input-item input-item-textarea ltn__custom-icon">
-                                                <textarea placeholder="Type your comments...."></textarea>
-                                            </div>
-                                            <div className="input-item input-item-name ltn__custom-icon">
-                                                <input type="text" placeholder="Type your name...."/>
-                                            </div>
-                                            <div className="input-item input-item-email ltn__custom-icon">
-                                                <input type="email" placeholder="Type your email...."/>
-                                            </div>
-                                            <div className="input-item input-item-website ltn__custom-icon">
-                                                <input type="text" name="website" placeholder="Type your website...."/>
-                                            </div>
-                                            <label className="mb-0"><input type="checkbox" name="agree"/> Save my name, email, and website in this browser for the next time I comment.</label>
-                                            <div className="btn-wrapper">
-                                                <button className="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">Submit</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                     {/* <!-- Shop Tab End --> */}
                 </div>
                 <div className="col-lg-4">
