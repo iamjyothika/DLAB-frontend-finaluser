@@ -3,6 +3,7 @@ import axios from 'axios';
 import { BASE_URL } from '../baseurl';
 import { useParams } from 'react-router-dom';
 import { Modal, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import '../App.css';
 
 
@@ -10,6 +11,7 @@ import '../App.css';
 function Lab_details() {
     const userId = sessionStorage.getItem('Userid');
     const token = sessionStorage.getItem('access_token');
+    const navigate = useNavigate();
 
     const [labdata, setLabdata] = useState({});
     const { labId: paramLabId} = useParams();
@@ -45,6 +47,7 @@ function Lab_details() {
                     
                     ]);
                     setLabdata(labResponse.data);
+                    console.log('Lab Response',labResponse.data);
                     setDoctorData(doctorResponse.data);
                     setPackageData(packageResponse.data.map(pkg => ({
                         ...pkg,
@@ -120,6 +123,17 @@ function Lab_details() {
     }; 
     const handleSubmitReview = async (e) => {
         e.preventDefault();
+        if (!token) {
+            alert('Login required');
+            navigate('/userlogin') ;// Show alert if token is missing
+            return; // Prevent further execution
+        }
+
+        // Handle the review submission logic here (e.g., API call)
+        // Assuming the review is successfully submitted
+        setShowModal(false); // Close the review form modal
+        setShowMessage(true); // Show the confirmation message modal
+   
         
     
         try {
@@ -160,7 +174,10 @@ function Lab_details() {
 
     const handleCloseModal = () => setShowModal(false);
     const handleShowModal = () => setShowModal(true);
-    const handleCloseMessage = () => setShowMessage(false);
+    const handleCloseMessage = () => {
+        setShowMessage(false);
+        navigate('/login'); // Redirect to login page when OK is clicked
+    };
 
                 
                

@@ -49,36 +49,32 @@ function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    let updatedToJson = new FormData()
-
-    updatedToJson.append('profile_pic',formData.name)
-    updatedToJson.append('profile_pic',formData.profile_pic)
-    updatedToJson.append('address',formData.address)
-    updatedToJson.append('city',formData.city)
-    updatedToJson.append('email',formData.email)
-    updatedToJson.append('pincode',formData.pincode)
-    updatedToJson.append('contact',formData.contact)
-    updatedToJson.append('state',formData.state)
-
-    axios.post(`${BASE_URL}/user/register/`,updatedToJson) 
-    .then((response)=>{
-      console.log(response.data);
-      navigate('/userlogin');
-    })
-    .catch((error) => {
-      console.error('There was an error!', error);
-    });
-
-
-
-    
-     
-
-
-    // Handle form submission, including image data
+  
+    let updatedToJson = new FormData();
+  
+    // Append all form fields to FormData
+    updatedToJson.append('name', formData.name);
+    updatedToJson.append('email', formData.email);
+    updatedToJson.append('contact', formData.contact);
+    updatedToJson.append('address', formData.address);
+    updatedToJson.append('city', formData.city);
+    updatedToJson.append('state', formData.state);
+    updatedToJson.append('pincode', formData.pincode);
+  
+    // Only append the profile_pic if it's not null
+    if (formData.profile_pic) {
+      updatedToJson.append('profile_pic', formData.profile_pic);
+    }
+  
+    axios.post(`${BASE_URL}/user/register/`, updatedToJson)
+      .then((response) => {
+        console.log(response.data);
+        navigate('/userlogin');
+      })
+      .catch((error) => {
+        console.error('There was an error!', error);
+      });
   };
-
 
   return (
     <>

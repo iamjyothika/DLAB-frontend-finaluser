@@ -136,7 +136,7 @@ function Review() {
                         }}
                     >
                         {/* Review input field */}
-                        <label htmlFor="reviewText">Add your review for</label>
+                        <label htmlFor="reviewText">Add your review </label>
                         <textarea
                             id="reviewText"
                             name="description"

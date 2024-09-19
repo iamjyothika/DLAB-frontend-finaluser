@@ -92,39 +92,58 @@ import { BASE_URL } from '../baseurl';
 
 
     {/* <!-- TEAM AREA START (Team - 3) --> */}
-    <div class="ltn__team-area pt-110--- pb-90">
-        <div class="container">
-            <div class="row justify-content-center">
-            {combinedData.map((doctor, index) => (
-           
-                <div key={index} class="col-lg-4 col-sm-6">
-                    <div class="ltn__team-item ltn__team-item-3---">
-                        <div class="team-img">
-                            <img src={`${BASE_URL}/${doctor.doctorimage}`} alt="Image"/>
-                        </div>
-                        <div style={{backgroundColor:'white'}} class="team-info">
-                            <h4><a href="team-details.html">{doctor.doctorname}</a></h4>
-                            <h6>{doctor.qualification}</h6>
-                            <h6 class="ltn__secondary-color">{doctor.specialiazation},{doctor.labname}</h6>
-                            <div class="ltn__social-media">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+    <div className="ltn__team-area pt-110--- pb-90">
+      <div className="container">
+        <div className="row justify-content-center">
+          {combinedData.map((doctor, index) => (
+            <div key={index} className="col-lg-4 col-sm-6">
+              <div className="ltn__team-item ltn__team-item-3---">
+                <div className="team-img" style={{ width: '100%', height: '300px', overflow: 'hidden' }}>
+                  <img
+                    src={`${BASE_URL}/${doctor.doctorimage}`}
+                    alt="Doctor"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover', // Ensure the image fits nicely in the div
+                    }}
+                  />
                 </div>
-            ))}
-
-                
-                
-               
-
-                
+                <div style={{ backgroundColor: 'white' }} className="team-info">
+                  <h4>
+                    <a href="team-details.html">{doctor.doctorname}</a>
+                  </h4>
+                  <h6>{doctor.qualification}</h6>
+                  <h6 className="ltn__secondary-color">
+                    {doctor.specialiazation}, {doctor.labname}
+                  </h6>
+                  <div className="ltn__social-media">
+                    <ul>
+                      <li>
+                        <a href="#">
+                          <i className="fab fa-facebook-f"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i className="fab fa-twitter"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i className="fab fa-linkedin"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
+          ))}
         </div>
+      </div>
+
+      
         <div class="ltn__pagination-area text-center"style={{marginTop:'5%',marginBottom:'5%'}}>
                          <div class="ltn__pagination">
                             <ul>

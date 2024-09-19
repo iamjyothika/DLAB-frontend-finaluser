@@ -21,6 +21,7 @@ function AppointmentBookingForm() {
   const [availableTimeSlots, setAvailableTimeSlots] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [modalMessage, setModalMessage] = useState('');
   const [showModal, setShowModal] = useState(false);
   const token = sessionStorage.getItem('access_token');
   console.log(formData);
@@ -83,7 +84,11 @@ function AppointmentBookingForm() {
 
     if (!token) {
       console.error('Token not found. Please login again.');
+      setModalMessage('Login required');
+      setShowModal(true);
       return;
+      
+       
     }
 
     try {
@@ -278,9 +283,9 @@ const formatDateTime = (startTime, endTime) => {
       </div>
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Booking Confirmation</Modal.Title>
+          <Modal.Title>{modalMessage.includes('Login required') ? 'Login Required' : 'Booking Confirmation'}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Booked Successfully!</Modal.Body>
+        <Modal.Body>{modalMessage}</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleRedirect}>
             OK

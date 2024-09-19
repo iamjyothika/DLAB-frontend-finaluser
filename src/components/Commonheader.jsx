@@ -1,6 +1,41 @@
-import React from "react";
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { BASE_URL } from '../baseurl';
+import { useNavigate } from 'react-router-dom';
 import "./Header.css";
 function Header() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate=useNavigate(); 
+  useEffect(() => {
+    const token = sessionStorage.getItem('access_token');
+    if (token) {
+      setIsAuthenticated(true); 
+    }
+  }, []);
+
+  const handleLogout = async () => {
+    const token = sessionStorage.getItem('access_token');
+
+    try {
+     
+      await axios.post(`${BASE_URL}/user/logout/`,null, {
+        headers: {
+          Authorization: `Bearer ${token}`, 
+        },
+      });
+  
+      sessionStorage.removeItem('access_token'); 
+      sessionStorage.removeItem('Userid');
+      setIsAuthenticated(false); 
+      navigate('/');
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
+
+
+
   return (
     // ######################### BOTTOM HEADER ###########################
     <header className="ltn__header-area ltn__header-3 section-bg-6--- test">
@@ -96,39 +131,42 @@ function Header() {
 
                   {/* <li><a style={{ fontSize:'20px' }} href="/userlogin">Login</a></li>  */}
 
-                  <div
-                    style={{ marginLeft: "15%", marginTop: "7px" }}
-                    className="ltn__drop-menu user-menu"
-                  >
-                    <ul>
-                      <li>
-                        <a href="#" style={{ width: "10%", color: "black" }}>
-                        <i className="fas fa-user mt-3 me-4" style={{ fontSize: '1.2rem'}}></i>
-                        </a>
-                        <ul>
-                          {/* <li><a href="/register">Register</a></li> */}
-                          <li>
-                            <a
-                              style={{ color: "black", margin: "2%" }}
-                              href="/userlogin"
-                            >
-                              Login
-                            </a>
-                          </li>
-                          <li>
-                            <a style={{ color: "black" }} href="/myaccount">
-                              My Account
-                            </a>
-                          </li>
-                          <li>
-                            <a style={{ color: "black" }} href="/viewappointment">
-                              Appointments
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
+                  <div style={{ marginLeft: '15%', marginTop: '7px' }} className="ltn__drop-menu user-menu">
+      <ul>
+        <li>
+          <a href="#" style={{ width: '10%', color: 'black' }}>
+            <i className="fas fa-user mt-3 me-4" style={{ fontSize: '1.2rem' }}></i>
+          </a>
+          <ul>
+            {!isAuthenticated ? (
+              // If user is not authenticated, show the "Login" option
+              <li>
+                <a style={{ color: 'black', margin: '2%' }} href="/userlogin">
+                  Login
+                </a>
+              </li>
+            ) : (
+              // If user is authenticated, show the "Logout" option
+              <li>
+                <a style={{ color: 'black', margin: '2%' }} href="#" onClick={handleLogout}>
+                  Logout
+                </a>
+              </li>
+            )}
+            <li>
+              <a style={{ color: 'black' }} href="/myaccount">
+                My Account
+              </a>
+            </li>
+            <li>
+              <a style={{ color: 'black' }} href="/viewappointment">
+                Appointments
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
 
                   <div className="mini-cart-icon mini-cart-icon-2">
                     <a

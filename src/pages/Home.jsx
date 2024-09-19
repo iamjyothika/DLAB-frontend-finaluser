@@ -183,167 +183,174 @@ function Home() {
             </div>
           </div>
           <div className="row ltn__tab-product-slider-one-active--- slick-arrow-1">
-            {labs.map((lab, index) => (
-              <div key={index} className="col-lg-4 col-md-6 col-sm-12" style={{ marginBottom: "20px", padding: "0 10px" }}>
-                <div style={{
-                  backgroundColor: "white",
-                  textAlign: "center",
-                  border: "1px solid #ddd",
-                  // borderRadius: "8px",
-                  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-                  width: "calc(100% - 40px)", // Reduce width from both ends
-                  height: "500px", // Increase height as needed
-                  margin: "0 auto", // Center align the cards
-                  overflow: "hidden",
-                  boxSizing: "border-box", // Include padding and border in the element's total width and height
-                  display: "flex",
-                  flexDirection: "column"
-                }} className="ltn__product-item ltn__product-item-3">
-                  <div style={{
-                    width: "100%",
-                    height: "50%", // Adjust height proportionally
-                    overflow: "hidden",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    backgroundColor: "white"
-                  }}>
-                    <a   
-                       onClick={() => handleLabClick(lab.id)}
-                className="zoomable"
-                style={{ cursor: 'pointer' }}
-              >
-                    
-                      <img
-                        src={`${BASE_URL}/${lab.profile_pic}`}
-                        alt={lab.labname}
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "cover"
-                        }}
-                      />
-                    </a>
-                  </div>
-                  <div style={{
-                    padding: "15px",
-                    flex: "1",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "flex-end",
-                    textAlign: "center"
-                  }}>
-                    <div className="product-ratting"></div>
-                    <h2 className="product-title" style={{ margin: "10px 0" }}>
-                      <a href="product-details.html">{lab.labname}</a>
-                    </h2>
-                    <div className="product-price" style={{ margin: "5px 0" }}>
-                      <span>
-                        <FontAwesomeIcon icon={faMapMarkerAlt} style={{ marginRight: "8px" }} />
-                        <a>{lab.city}, {lab.state}</a>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="ltn__blog-area pt-115 pb-70" id="section2">
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-12">
-                  <div className="section-title-area ltn__section-title-2--- text-center">
-                    <h1 style={{ color: "black", textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', marginBottom: '5%' }} className="section-title">
-                      POPULAR PACKAGES
-                    </h1>
-                  </div>
-                </div>
-              </div>
-              <div className="row ltn__tab-product-slider-one-active--- slick-arrow-1">
-                {combinedData.map((pkg, index) => (
-                  <div key={index} className="col-lg-4 col-md-6 col-sm-12" style={{ marginBottom: "20px", padding: "0 10px" }}>
-                    <div style={{
-                      backgroundColor: "white",
-                      textAlign: "center",
-                      border: "1px solid #ddd",
-                      // borderRadius: "8px",
-                      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-                      width: "calc(100% - 40px)", // Adjust width from both ends
-                      height: "500px", // Increase height as needed
-                      margin: "0 auto", // Center align the cards
-                      overflow: "hidden",
-                      boxSizing: "border-box", // Include padding and border in the element's total width and height
-                      display: "flex",
-                      flexDirection: "column"
-                    }} className="ltn__blog-item ltn__blog-item-3">
-                      <div style={{
-                        width: "100%",
-                        height: "50%", // Adjust height proportionally
-                        overflow: "hidden",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        backgroundColor: "white",
-                        flexShrink: 0,
-                      }} className="ltn__blog-img">
-                        <a href="blog-details.html">
-                          <img
-                            src={`${BASE_URL}/${pkg.packageimage}`}
-                            alt="#"
-                            style={{
-                              width: "100%",
-                              height: "100%",
-                              objectFit: "cover"
-                            }}
-                          />
-                        </a>
-                      </div>
-                      <div
-                        className="ltn__blog-brief mt-10"
-                           style={{
-            padding: "15px",
-            width: "100%",  // Ensures full width inside the card
-            textAlign: "center",
-            flexGrow: 1, // Allows the section to take up available space
+  {labs.map((lab, index) => (
+    <div
+      key={index}
+      className="col-lg-4 col-md-6 col-sm-12"
+      style={{ marginBottom: "20px", padding: "0 10px" }}
+    >
+      <div
+        style={{
+          backgroundColor: "white",
+          textAlign: "center",
+          border: "1px solid #ddd",
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+          width: "calc(100% - 40px)", // Adjust width from both ends
+          height: "450px", // Set a fixed height for the card
+          margin: "0 auto", // Center align the cards
+          overflow: "hidden",
+          boxSizing: "border-box", // Include padding and border in the element's total width and height
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between", // Push content to the top and bottom
+        }}
+        className="ltn__product-item ltn__product-item-3"
+      >
+        {/* Image Section */}
+        <div
+          style={{
+            width: "100%",
+            height: "75%", // Increased height for image section
+            overflow: "hidden",
             display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between", // Ensures content is spaced between the top and bottom
-            height: "100%", 
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "white",
           }}
         >
+          <a
+            onClick={() => handleLabClick(lab.id)}
+            className="zoomable"
+            style={{ cursor: "pointer", width: "100%", height: "100%" }}
+          >
+            <img
+              src={`${BASE_URL}/${lab.profile_pic}`}
+              alt={lab.labname}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover", // Ensure the image covers the entire container
+                objectPosition: "center", // Center the image within the container
+              }}
+            />
+          </a>
+        </div>
 
-                        <div className="ltn__blog-meta">
-                          <ul style={{ padding: 0, listStyle: "none", margin: 0 }}>
-                            <li className="ltn__blog-author">
-                              <a href="#">
-                                <i className="far fa-user"></i>{pkg.labname}
-                              </a>
-                            </li>
-                            <li className="ltn__blog-tags">
-                              <a href="#">
-                                <i className="fas fa-tags"></i>{pkg.testCount} Tests included
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
+        {/* Text Section */}
+        <div
+          style={{
+            padding: "15px",
+            textAlign: "center",
+          }}
+        >
+          <h2 className="product-title" style={{ margin: "5px 0" }}>
+            <a href="product-details.html">{lab.labname}</a>
+          </h2>
+          <div className="product-price" style={{ marginTop: "5px" }}>
+            <span>
+              <FontAwesomeIcon icon={faMapMarkerAlt} style={{ marginRight: "5px" }} />
+              <a>{lab.city}, {lab.state}</a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
 
-                        <h3 class="ltn__blog-title">
-                          <a href="blog-details.html">
-                            Women's Advanced Healthcare Package with Stress Impact
-                            Checkup
-                          </a>
-                        </h3>
 
-                        <div className="ltn__blog-meta-btn">
-                          <div className="ltn__blog-meta">
-                            <ul style={{ padding: 0, listStyle: "none", margin: 0 }}>
-                              <li className="ltn__blog-date">
-                                <i className="fas fa-rupee-sign" style={{ color: "green" }}></i>
-                                {pkg.price}
-                              </li>
-                            </ul>
-                          </div>
-                          <div className="ltn__blog-btn">
+
+
+
+
+<div className="ltn__blog-area pt-115 pb-70" id="section2">
+  <div className="container">
+    <div className="row">
+      <div className="col-lg-12">
+        <div className="section-title-area ltn__section-title-2--- text-center">
+          <h1 style={{ color: "black", textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', marginBottom: '5%' }} className="section-title">
+            POPULAR PACKAGES
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div className="row ltn__tab-product-slider-one-active--- slick-arrow-1">
+      {combinedData.map((pkg, index) => (
+        <div key={index} className="col-lg-4 col-md-6 col-sm-12" style={{ marginBottom: "20px", padding: "0 10px" }}>
+          <div style={{
+            backgroundColor: "white",
+            textAlign: "center",
+            border: "1px solid #ddd",
+            // borderRadius: "8px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+            width: "calc(100% - 40px)", // Adjust width from both ends
+            height: "auto", // Height adjusted to fit content
+            margin: "0 auto", // Center align the cards
+            overflow: "hidden",
+            boxSizing: "border-box", // Include padding and border in the element's total width and height
+            display: "flex",
+            flexDirection: "column"
+          }} className="ltn__blog-item ltn__blog-item-3">
+            <div style={{
+              width: "100%",
+              height: "50%", // Adjust height proportionally
+              overflow: "hidden",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "white",
+              flexShrink: 0,
+            }} className="ltn__blog-img">
+              <a href="blog-details.html">
+                <img
+                  src={`${BASE_URL}/${pkg.packageimage}`}
+                  alt="#"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover"
+                  }}
+                />
+              </a>
+            </div>
+            <div
+              className="ltn__blog-brief mt-10"
+              style={{
+                padding: "15px",
+                width: "100%",  // Ensures full width inside the card
+                textAlign: "center",
+                flexGrow: 1, // Allows the section to take up available space
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between", // Ensures content is spaced between the top and bottom
+                height: "100%",
+              }}
+            >
+              <div className="ltn__blog-meta">
+                <ul style={{ padding: 0, listStyle: "none", margin: 0 }}>
+                  <li className="ltn__blog-author">
+                    <a href="#">
+                      <i className="far fa-user"></i>{pkg.labname}
+                    </a>
+                  </li>
+                  <li className="ltn__blog-tags">
+                    <a href="#">
+                      <i className="fas fa-tags"></i>{pkg.testCount} Tests included
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="ltn__blog-meta-btn">
+                <div className="ltn__blog-meta">
+                  <ul style={{ padding: 0, listStyle: "none", margin: 0 }}>
+                    <li className="ltn__blog-date">
+                      <i className="fas fa-rupee-sign" style={{ color: "green" }}></i>
+                      {pkg.price}
+                    </li>
+                  </ul>
+                </div>
+                <div className="ltn__blog-btn">
                             <a href="blog-details.html">Book Now</a>
                           </div>
                         </div>
@@ -351,10 +358,15 @@ function Home() {
                     </div>
 
                   </div>
-                ))}
-              </div>
-            </div>
-          </div>
+             
+          
+         
+       
+      ))}
+    </div>
+  </div>
+</div>
+
 
 
 
